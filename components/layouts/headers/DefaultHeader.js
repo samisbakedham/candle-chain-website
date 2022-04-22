@@ -56,13 +56,13 @@ export default function DefaultHeader() {
               href="#"
               className="text-base font-medium text-white hover:text-zinc-300"
             >
-              Login
+              Access Wallet
             </a>
             <a
               href="#"
               className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-600"
             >
-              Create wallet
+              Create Wallet
             </a>
           </div>
         </nav>
