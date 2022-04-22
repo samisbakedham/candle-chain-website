@@ -13,7 +13,7 @@ const stats = [
     stat: "2s",
     previousStat: "5s",
     change: "250%",
-    changeType: "increase",
+    changeType: "decrease",
   },
   {
     name: "Total Transactions",
