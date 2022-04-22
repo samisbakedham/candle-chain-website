@@ -34,17 +34,14 @@ export default function HomePage() {
                   />
                 </a>
                 <h1 className="mt-4 text-4xl tracking-tight font-extrabold text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
-                  <span className="block">A better place for</span>
+                  <span className="block">A scaleable, efficent place for</span>
                   <span className="block text-indigo-400">
-                    religious practices.
+                    developers to build on web3.
                   </span>
                 </h1>
                 <p className="mt-3 text-base text-gray-300 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-                  Sooner or later, all attributes of the offline world could
-                  become virtual assets inside metaverses. Even such an
-                  intangible thing as Religion comes to the digital world.
-                  Discover the Candle startup that brings spirituality into the
-                  Candle’s metaverse.
+                Candle believes in Web3 for all. Candle is a decentralised EVM based scaling platform that enables developers to build scalable user-friendly dApps with zero-to-low transaction fees without ever sacrificing on security.
+
                 </p>
                 <div className="mt-6">
                   <form action="#" className="sm:max-w-xl sm:mx-auto lg:mx-0">
