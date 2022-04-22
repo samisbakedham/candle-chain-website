@@ -3,6 +3,8 @@ import { Popover, Transition } from "@headlessui/react";
 import { ChevronRightIcon } from "@heroicons/react/solid";
 import DefaultLayout from "../components/layouts/DefaultLayout";
 import StatsOverview from "../components/stats/StatsOverview";
+import RecentBlocks from "../components/stats/RecentBlocks";
+import RecentTransactions from "../components/stats/RecentTransactions";
 
 HomePage.getLayout = (page) => {
   return <DefaultLayout>{page}</DefaultLayout>;
@@ -77,8 +79,10 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-          <div className="mx-8 lg:mx-0">
+          <div className="mx-8 space-y-16 lg:mx-0">
             <StatsOverview />
+            <RecentBlocks />
+            <RecentTransactions />
           </div>
         </div>
       </div>
