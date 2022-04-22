@@ -1,5 +1,3 @@
-import { Fragment } from "react";
-import { Popover, Transition } from "@headlessui/react";
 import { ChevronRightIcon } from "@heroicons/react/solid";
 import DefaultLayout from "../components/layouts/DefaultLayout";
 import StatsOverview from "../components/stats/StatsOverview";
@@ -34,14 +32,16 @@ export default function HomePage() {
                   />
                 </a>
                 <h1 className="mt-4 text-4xl tracking-tight font-extrabold text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
-                  <span className="block">A scaleable, efficent place for</span>
-                  <span className="block text-indigo-400">
+                  <span>A scaleable, efficent place for </span>
+                  <span className="text-indigo-400">
                     developers to build on web3.
                   </span>
                 </h1>
                 <p className="mt-3 text-base text-gray-300 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-                Candle believes in Web3 for all. Candle is a decentralised EVM based scaling platform that enables developers to build scalable user-friendly dApps with zero-to-low transaction fees without ever sacrificing on security.
-
+                  Candle believes in Web3 for all. Candle is a decentralised EVM
+                  based scaling platform that enables developers to build
+                  scalable user-friendly dApps with zero-to-low transaction fees
+                  without ever sacrificing on security.
                 </p>
                 <div className="mt-6">
                   <form action="#" className="sm:max-w-xl sm:mx-auto lg:mx-0">
