@@ -33,7 +33,7 @@ export default function DefaultHeader() {
                 </div>
               </a>
               <div className="-mr-2 flex items-center md:hidden">
-                <Popover.Button className="bg-zinc-900 rounded-md p-2 inline-flex items-center justify-center text-zinc-400 hover:bg-zinc-800 focus:outline-none focus:ring-2 focus-ring-inset focus:ring-white">
+                <Popover.Button className="bg-zinc-900 rounded-md p-2 inline-flex items-center justify-center text-zinc-400 hover:bg-zinc-800 focus:outline-none focus:ring-2 focus-ring-inset focus:ring-zinc-700">
                   <span className="sr-only">Open main menu</span>
                   <MenuIcon className="h-6 w-6" aria-hidden="true" />
                 </Popover.Button>
@@ -88,7 +88,7 @@ export default function DefaultHeader() {
                 <img className="h-8 w-auto" src="/images/logo.png" alt="" />
               </div>
               <div className="-mr-2">
-                <Popover.Button className="bg-zinc-900/70 rounded-md p-2 inline-flex items-center justify-center text-zinc-400 hover:bg-zinc-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-600">
+                <Popover.Button className="bg-zinc-900/70 rounded-md p-2 inline-flex items-center justify-center text-zinc-400 hover:bg-zinc-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-zinc-700">
                   <span className="sr-only">Close menu</span>
                   <XIcon className="h-6 w-6" aria-hidden="true" />
                 </Popover.Button>
@@ -100,7 +100,7 @@ export default function DefaultHeader() {
                   <a
                     key={item.name}
                     href={item.href}
-                    className="block px-3 py-2 rounded-md text-base font-medium text-zinc-300 hover:bg-zinc-50"
+                    className="block px-3 py-2 rounded-md text-base font-medium text-zinc-300 hover:bg-zinc-700"
                   >
                     {item.name}
                   </a>
