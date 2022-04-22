@@ -33,7 +33,7 @@ export default function DefaultHeader() {
                 </div>
               </a>
               <div className="-mr-2 flex items-center md:hidden">
-                <Popover.Button className="bg-gray-900 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:bg-gray-800 focus:outline-none focus:ring-2 focus-ring-inset focus:ring-white">
+                <Popover.Button className="bg-zinc-900 rounded-md p-2 inline-flex items-center justify-center text-zinc-400 hover:bg-zinc-800 focus:outline-none focus:ring-2 focus-ring-inset focus:ring-white">
                   <span className="sr-only">Open main menu</span>
                   <MenuIcon className="h-6 w-6" aria-hidden="true" />
                 </Popover.Button>
@@ -44,7 +44,7 @@ export default function DefaultHeader() {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-base font-medium text-white hover:text-gray-300"
+                  className="text-base font-medium text-white hover:text-zinc-300"
                 >
                   {item.name}
                 </a>
@@ -54,13 +54,13 @@ export default function DefaultHeader() {
           <div className="hidden md:flex md:items-center md:space-x-6">
             <a
               href="#"
-              className="text-base font-medium text-white hover:text-gray-300"
+              className="text-base font-medium text-white hover:text-zinc-300"
             >
               Log in
             </a>
             <a
               href="#"
-              className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700"
+              className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-zinc-600 hover:bg-zinc-700"
             >
               Start free trial
             </a>
@@ -81,13 +81,14 @@ export default function DefaultHeader() {
           focus
           className="absolute z-10 top-0 inset-x-0 p-2 transition transform origin-top md:hidden"
         >
-          <div className="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
+          <div className="rounded-lg shadow-md bg-zinc-800 ring-1 ring-black ring-opacity-5 overflow-hidden">
             <div className="px-5 pt-4 flex items-center justify-between">
               <div>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img className="h-8 w-auto" src="/images/logo.png" alt="" />
               </div>
               <div className="-mr-2">
-                <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-600">
+                <Popover.Button className="bg-zinc-900/70 rounded-md p-2 inline-flex items-center justify-center text-zinc-400 hover:bg-zinc-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-600">
                   <span className="sr-only">Close menu</span>
                   <XIcon className="h-6 w-6" aria-hidden="true" />
                 </Popover.Button>
@@ -99,7 +100,7 @@ export default function DefaultHeader() {
                   <a
                     key={item.name}
                     href={item.href}
-                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-50"
+                    className="block px-3 py-2 rounded-md text-base font-medium text-zinc-300 hover:bg-zinc-50"
                   >
                     {item.name}
                   </a>
@@ -114,9 +115,9 @@ export default function DefaultHeader() {
                 </a>
               </div>
               <div className="mt-6 px-5">
-                <p className="text-center text-base font-medium text-gray-500">
+                <p className="text-center text-base font-medium text-zinc-400">
                   Existing customer?{" "}
-                  <a href="#" className="text-gray-900 hover:underline">
+                  <a href="#" className="text-indigo-300 hover:underline">
                     Login
                   </a>
                 </p>
