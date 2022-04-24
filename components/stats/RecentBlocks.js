@@ -1,57 +1,6 @@
 import { useNetworkStats } from '../../hooks/useNetworkStats';
 import BlockOverview from './BlockOverview';
 
-// const blocks = [
-//     {
-//         id: 1001351,
-//         transactions: 0,
-//         createdAt: '2020-05-06T13:00:00.000Z',
-//         miner: '0x0000000000000000000000000000000000000000',
-//         difficulty: '0x0',
-//         status: 'mined',
-//     },
-//     {
-//         id: 1001350,
-//         transactions: 0,
-//         createdAt: '2020-05-06T12:00:00.000Z',
-//         miner: '0x0000000000000000000000000000000000000000',
-//         difficulty: '0x0',
-//         status: 'mined',
-//     },
-//     {
-//         id: 1001349,
-//         transactions: 0,
-//         createdAt: '2020-05-06T11:00:00.000Z',
-//         miner: '0x0000000000000000000000000000000000000000',
-//         difficulty: '0x0',
-//         status: 'processing',
-//     },
-//     {
-//         id: 1001348,
-//         transactions: 0,
-//         createdAt: '2020-05-06T10:00:00.000Z',
-//         miner: '0x0000000000000000000000000000000000000000',
-//         difficulty: '0x0',
-//         status: 'mined',
-//     },
-//     {
-//         id: 1001347,
-//         transactions: 0,
-//         createdAt: '2020-05-06T09:00:00.000Z',
-//         miner: '0x0000000000000000000000000000000000000000',
-//         difficulty: '0x0',
-//         status: 'failed',
-//     },
-//     {
-//         id: 1001346,
-//         transactions: 0,
-//         createdAt: '2020-05-06T08:00:00.000Z',
-//         miner: '0x0000000000000000000000000000000000000000',
-//         difficulty: '0x0',
-//         status: 'invalid',
-//     },
-// ];
-
 export default function RecentBlocks() {
     const { loading, totalBlocks } = useNetworkStats();
     const blocksToShow = 6;
@@ -81,8 +30,6 @@ export default function RecentBlocks() {
             i--
         ) {
             const blockNumber = i;
-
-            console.log('Number: ', blockNumber);
 
             const block = (
                 <BlockOverview key={blockNumber} number={blockNumber} />
