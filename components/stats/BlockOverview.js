@@ -42,10 +42,6 @@ export default function BlockOverview({ number }) {
         };
 
         fetchBlockWithNumber(number);
-
-        return () => {
-            setBlock(null);
-        };
     }, [number]);
 
     const getStatusColor = (status) => {
@@ -104,17 +100,17 @@ export default function BlockOverview({ number }) {
                 <div className="flex-1 truncate">
                     <div className="flex items-center space-x-3">
                         <h3 className="text-blue-300 text-sm font-semibold truncate">
-                            #{parseInt(block?.number ?? number, 16)}{' '}
+                            #{parseInt(block?.number, 16) || number}{' '}
                             <span className="text-gray-100">
-                                ({block?.number ?? number})
+                                ({block?.number ?? `0x${number.toString(16)}`})
                             </span>
                         </h3>
                         <span
                             className={`capitalize flex-shrink-0 inline-block px-2 py-0.5 text-xs font-medium rounded-full ${getStatusColor(
-                                block?.status || 'mined',
+                                loading ? 'processing' : 'mined',
                             )}`}
                         >
-                            {block?.status || 'mined'}
+                            {loading ? 'processing' : 'mined'}
                         </span>
                     </div>
                     <p className="mt-1 text-indigo-300 text-sm truncate">
@@ -136,12 +132,12 @@ export default function BlockOverview({ number }) {
 
                     <p className="mt-4 px-4 py-2 rounded-lg bg-green-500/10 text-green-300 text-sm truncate">
                         <span className="font-medium">Gas used: </span>
-                        {parseInt(block?.gasUsed ?? 0, 16)}
+                        {parseInt(block?.gasUsed, 16) || 0}
                     </p>
 
                     <p className="mt-2 px-4 py-2 rounded-lg bg-yellow-500/10 text-yellow-300 text-sm truncate">
                         <span className="font-medium">Gas limit: </span>
-                        {parseInt(block?.gasLimit, 16) || 'Unknown'}
+                        {parseInt(block?.gasLimit, 16) || 0}
                     </p>
                 </div>
             </div>
