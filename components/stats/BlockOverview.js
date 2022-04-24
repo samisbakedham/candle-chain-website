@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { API_URL } from '../../utils/constants';
 
 export default function BlockOverview({ number }) {
+    const [loading, setLoading] = useState(true);
     const [block, setBlock] = useState(null);
 
     useEffect(() => {
@@ -33,9 +34,8 @@ export default function BlockOverview({ number }) {
                 const data = await response.json();
                 const block = data.result;
 
-                console.log('block data: ', block);
-
                 setBlock(block);
+                setLoading(false);
             } catch (error) {
                 console.log(error);
             }
@@ -95,7 +95,10 @@ export default function BlockOverview({ number }) {
             key={block?.hash}
             className="col-span-1 bg-zinc-800/70 rounded-lg shadow divide-gray-700/50"
         >
-            <div className="w-full flex items-center justify-between p-6 space-x-6">
+            <div
+                className={`w-full flex items-center justify-between p-6 space-x-6
+                ${loading ? 'opacity-50' : 'opacity-100'}`}
+            >
                 <div className="flex-1 truncate">
                     <div className="flex items-center space-x-3">
                         <h3 className="text-blue-300 text-sm font-semibold truncate">
