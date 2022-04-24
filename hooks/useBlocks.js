@@ -5,14 +5,18 @@ const BlocksContext = createContext();
 
 export const BlocksProvider = (props) => {
     const [blocks, setBlocks] = useState([]);
-    const [blocksToFetch, setBlocksToFetch] = useState([]);
 
     const fetchBlockWithNumber = async (number) => {
-        // Check if block is already in fetching queue
-        if (blocksToFetch.includes(number)) return;
+        // Check if block is already in the list
+        const block = blocks?.find((block) => block?.number === number);
 
-        // Add block to fetching queue
-        setBlocksToFetch((prevQueue) => [...prevQueue, number]);
+        if (block) {
+            console.log('Block already in list');
+            return block;
+        }
+
+        // Convert number to hexadecimal with 0x prefix
+        const hexNumber = `0x${number.toString(16)}`;
 
         // Fetch block
         try {
@@ -24,7 +28,7 @@ export const BlocksProvider = (props) => {
                 body: JSON.stringify({
                     jsonrpc: '2.0',
                     method: 'eth_getBlockByNumber',
-                    params: [number, true],
+                    params: [hexNumber, true],
                     id: 1,
                 }),
             });
@@ -32,6 +36,7 @@ export const BlocksProvider = (props) => {
             const data = await response.json();
             const block = data.result;
 
+            // Add block to list
             setBlocks((prevBlocks) => [...prevBlocks, block]);
 
             return block;
@@ -41,11 +46,13 @@ export const BlocksProvider = (props) => {
     };
 
     const fetchBlockWithHash = async (hash) => {
-        // Check if block is already in fetching queue
-        if (blocksToFetch.includes(hash)) return;
+        // Check if block is already in the list
+        const block = blocks?.find((block) => block?.hash === hash);
 
-        // Add block to fetching queue
-        setBlocksToFetch((prevQueue) => [...prevQueue, hash]);
+        if (block) {
+            console.log('Block already in list');
+            return block;
+        }
 
         // Fetch block
         try {
@@ -65,6 +72,7 @@ export const BlocksProvider = (props) => {
             const data = await response.json();
             const block = data.result;
 
+            // Add block to list
             setBlocks((prevBlocks) => [...prevBlocks, block]);
 
             return block;
@@ -74,28 +82,40 @@ export const BlocksProvider = (props) => {
     };
 
     const getBlockWithNumber = async (number) => {
-        if (!number) return;
+        if (!number) {
+            console.log('No block number provided');
+            return;
+        }
 
+        // Check if number is a hexadecimal
+        if (number.toString().match(/^0x[0-9a-fA-F]{64}$/))
+            number = parseInt(number.replace('0x', ''), 16);
+
+        // Check if block is already in cache
         const block = blocks?.find((block) => block?.number === number);
-
-        console.log('block', block);
         if (block) return block;
 
         const fetchedBlock = await fetchBlockWithNumber(number);
-        console.log('fetchedBlock', fetchedBlock);
+        if (fetchedBlock) return fetchedBlock;
 
-        return fetchedBlock;
+        console.log('Block not found');
+        return null;
     };
 
     const getBlockWithHash = async (hash) => {
-        if (!hash) return;
+        if (!hash) {
+            console.log('No block hash provided');
+            return;
+        }
 
         const block = blocks?.find((block) => block?.hash === hash);
-
         if (block) return block;
 
         const fetchedBlock = await fetchBlockWithHash(hash);
-        return fetchedBlock;
+        if (fetchedBlock) return fetchedBlock;
+
+        console.log('Block not found');
+        return null;
     };
 
     const values = {
