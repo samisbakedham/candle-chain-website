@@ -88,6 +88,7 @@ export const NetworkStatsProvider = (props) => {
     };
 
     useEffect(() => {
+        // Use Promise.all to fetch all data at once, then refetch data every 2 seconds
         Promise.all([
             fetchTotalBlocks(),
             fetchTotalTransactions(),
@@ -99,6 +100,12 @@ export const NetworkStatsProvider = (props) => {
             .catch((error) => {
                 console.log(error);
             });
+
+        setInterval(() => {
+            fetchTotalBlocks();
+            fetchTotalTransactions();
+            fetchAvgBlockTime();
+        }, 5000);
     }, []);
 
     const values = {
