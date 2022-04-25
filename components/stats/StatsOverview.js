@@ -1,8 +1,40 @@
+import { useBlocks } from '../../hooks/useBlocks';
 import { useNetworkStats } from '../../hooks/useNetworkStats';
 import StatisticContainer from './StatisticContainer';
 
 export default function StatsOverview() {
-    const { totalBlocks, totalTransactions, avgBlockTime } = useNetworkStats();
+    const { totalBlocks, totalTransactions } = useNetworkStats();
+    const { blocks } = useBlocks();
+
+    const getAvgBlockTime = () => {
+        // If there are no blocks, defaults to 0 second
+        if (blocks.length === 0) return 0;
+
+        // remove block with duplicated number
+        const blocksWithoutDuplicates = blocks.filter(
+            (block, index, self) =>
+                index === self.findIndex((t) => t.number === block.number),
+        );
+
+        // Get block timestamps, then sort them in ascending order
+        const blockTimes = blocksWithoutDuplicates
+            .map((block) => block.timestamp)
+            .sort((a, b) => a - b);
+
+        // Calculate the average block time based on block timestamp differences
+        // Between current block and previous block
+        const totalAvgBlockTime = blockTimes.reduce((acc, _, index) => {
+            if (index === 0) return 0;
+            return acc + Math.abs(blockTimes[index] - blockTimes[index - 1]);
+        }, 0);
+
+        const avgBlockTime = (
+            totalAvgBlockTime /
+            (blockTimes.length - 1)
+        ).toFixed(6);
+
+        return avgBlockTime > 0 ? avgBlockTime : 0;
+    };
 
     return (
         <div>
@@ -29,7 +61,7 @@ export default function StatsOverview() {
                     key="avg-block-time"
                     data={{
                         title: 'Avg. block time',
-                        currentStats: avgBlockTime,
+                        currentStats: `${getAvgBlockTime()}s`,
                     }}
                 />
             </dl>
