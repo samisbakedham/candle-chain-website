@@ -33,7 +33,7 @@ export const NetworkStatsProvider = (props) => {
             console.log(error);
         }
     };
-
+// Check this out to implement https://eth.wiki/json-rpc/API#eth_gettransactionbyhash
     const fetchTotalTransactions = async () => {
         try {
             const response = await fetch(API_URL, {
