@@ -1,10 +1,14 @@
+import { useState } from 'react';
 import { useBlocks } from '../../hooks/useBlocks';
 import { useNetworkStats } from '../../hooks/useNetworkStats';
 import StatisticContainer from './StatisticContainer';
 
 export default function StatsOverview() {
-    const { totalBlocks, totalTransactions } = useNetworkStats();
+    const { totalBlocks, totalTransactions, updateTotalTransactions } =
+        useNetworkStats();
     const { blocks } = useBlocks();
+
+    const [crawling, setCrawling] = useState(false);
 
     const getAvgBlockTime = () => {
         // If there are no blocks, defaults to 0 second
@@ -36,6 +40,45 @@ export default function StatsOverview() {
         return avgBlockTime > 0 ? avgBlockTime : 0;
     };
 
+    const addBlockWithNumber = async (number) => {
+        const response = await fetch('/api/blocks', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                number,
+            }),
+        });
+
+        // check if response is ok
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+        return data;
+    };
+
+    const crawlTransactions = async () => {
+        if (crawling) return;
+
+        try {
+            setCrawling(true);
+            for (
+                let i = totalTransactions.latest_block;
+                i < totalBlocks;
+                i += 10
+            ) {
+                const block = await addBlockWithNumber(i);
+                updateTotalTransactions(block.data);
+            }
+        } catch (error) {
+            console.log(error);
+            setCrawling(false);
+        }
+    };
+
     return (
         <div>
             <h3 className="text-lg leading-6 font-medium text-gray-100">
@@ -52,6 +95,10 @@ export default function StatsOverview() {
                 />
                 <StatisticContainer
                     key="total-transactions"
+                    buttonLabel={
+                        crawling ? 'Crawling...' : 'Crawl transactions'
+                    }
+                    onClick={crawlTransactions}
                     data={{
                         title: 'Total transactions',
                         currentStats: totalTransactions.latest_transactions,
