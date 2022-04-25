@@ -123,12 +123,12 @@ export default function DefaultHeader() {
                                     href="#"
                                     className="block text-center w-full py-3 px-4 rounded-md shadow bg-indigo-600 text-white font-medium hover:bg-indigo-700"
                                 >
-                                    Start free trial
+                                    Sign up
                                 </a>
                             </div>
                             <div className="mt-6 px-5">
                                 <p className="text-center text-base font-medium text-zinc-400">
-                                    Existing customer?{' '}
+                                    Existing account?{' '}
                                     <a
                                         href="#"
                                         className="text-indigo-300 hover:underline"
