@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
+import { useBlocks } from '../../hooks/useBlocks';
 import { API_URL } from '../../utils/constants';
 
 export default function BlockOverview({ number }) {
+    const { addBlock } = useBlocks();
+
     const [loading, setLoading] = useState(true);
     const [block, setBlock] = useState(null);
 
@@ -33,6 +36,10 @@ export default function BlockOverview({ number }) {
 
                 const data = await response.json();
                 const block = data.result;
+                if (!block) return;
+
+                // Add block to list
+                addBlock(block);
 
                 setBlock(block);
                 setLoading(false);
@@ -42,7 +49,7 @@ export default function BlockOverview({ number }) {
         };
 
         fetchBlockWithNumber(number);
-    }, [number]);
+    }, [number, addBlock]);
 
     const getStatusColor = (status) => {
         switch (status) {
