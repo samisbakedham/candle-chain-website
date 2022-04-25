@@ -11,7 +11,10 @@ export default function StatisticContainer({ data, buttonLabel, onClick }) {
                 {data.title}{' '}
                 {onClick && (
                     <span>
-                        <button className="ml-2 px-2 py-0.5 rounded-lg bg-indigo-500/30 hover:bg-indigo-400/30 text-indigo-300 transition duration-300">
+                        <button
+                            className="ml-2 px-2 py-0.5 rounded-lg bg-indigo-500/30 hover:bg-indigo-400/30 text-indigo-300 transition duration-300"
+                            onClick={onClick}
+                        >
                             {buttonLabel ?? 'Button'}
                         </button>
                     </span>
