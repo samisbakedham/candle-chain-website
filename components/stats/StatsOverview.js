@@ -102,7 +102,7 @@ export default function StatsOverview() {
                     data={{
                         title: 'Total transactions',
                         currentStats: totalTransactions.latest_transactions,
-                        previousStats: `${totalTransactions.latest_block} blocks`,
+                        previousStats: `the first ${totalTransactions.latest_block} blocks`,
                     }}
                 />
                 <StatisticContainer
