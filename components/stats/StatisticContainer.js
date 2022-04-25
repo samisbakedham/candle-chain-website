@@ -1,6 +1,6 @@
 // import { ArrowSmDownIcon, ArrowSmUpIcon } from '@heroicons/react/solid';
 
-export default function StatisticContainer({ data }) {
+export default function StatisticContainer({ data, buttonLabel, onClick }) {
     // function classNames(...classes) {
     //     return classes.filter(Boolean).join(' ');
     // }
@@ -8,7 +8,14 @@ export default function StatisticContainer({ data }) {
     return (
         <div key={data.title} className="px-4 py-5 sm:p-6">
             <dt className="text-base font-semibold text-gray-100">
-                {data.title}
+                {data.title}{' '}
+                {onClick && (
+                    <span>
+                        <button className="ml-2 px-2 py-0.5 rounded-lg bg-indigo-500/30 hover:bg-indigo-400/30 text-indigo-300 transition duration-300">
+                            {buttonLabel ?? 'Button'}
+                        </button>
+                    </span>
+                )}
             </dt>
             <dd className="mt-1 flex justify-between items-baseline md:block lg:flex">
                 <div className="flex items-baseline text-2xl font-semibold text-indigo-300">
