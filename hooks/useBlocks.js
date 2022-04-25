@@ -118,8 +118,35 @@ export const BlocksProvider = (props) => {
         return null;
     };
 
+    const addBlock = (block) => {
+        // Check if block is already in the list
+        const blockInList = blocks?.find(
+            (blockInList) =>
+                blockInList?.hash === block?.hash ||
+                blockInList?.number === block?.number,
+        );
+
+        if (blockInList) return;
+        setBlocks((prevBlocks) => [...prevBlocks, block]);
+    };
+
+    const removeBlockWithNumber = (block) => {
+        setBlocks((prevBlocks) =>
+            prevBlocks.filter((prevBlock) => prevBlock.number !== block.number),
+        );
+    };
+
+    const removeBlockWithHash = (block) => {
+        setBlocks((prevBlocks) =>
+            prevBlocks.filter((prevBlock) => prevBlock.hash !== block.hash),
+        );
+    };
+
     const values = {
         blocks,
+        addBlock,
+        removeBlockWithNumber,
+        removeBlockWithHash,
 
         getBlockWithNumber,
         getBlockWithHash,
