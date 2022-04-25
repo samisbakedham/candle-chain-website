@@ -13,9 +13,11 @@ export default function StatisticContainer({ data }) {
             <dd className="mt-1 flex justify-between items-baseline md:block lg:flex">
                 <div className="flex items-baseline text-2xl font-semibold text-indigo-300">
                     {data.currentStats}
-                    {/* <span className="ml-2 text-sm font-medium text-gray-300">
-                        from {data.previousStats}
-                    </span> */}
+                    {data.previousStats && (
+                        <span className="ml-2 text-sm font-medium text-gray-300">
+                            from {data.previousStats}
+                        </span>
+                    )}
                 </div>
 
                 {/* <div

@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
+import { supabase } from '../utils/clients/supabase';
 import { API_URL } from '../utils/constants';
 
 const NetworkStatsContext = createContext();
@@ -35,26 +36,13 @@ export const NetworkStatsProvider = (props) => {
 
     const fetchTotalTransactions = async () => {
         try {
-            const response = await fetch(API_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    jsonrpc: '2.0',
-                    method: 'eth_getTransactionCount',
-                    params: [
-                        '0x0000000000000000000000000000000000000000',
-                        'latest',
-                    ],
-                    id: 1,
-                }),
-            });
+            const { data, error } = await supabase
+                .from('chain-overview')
+                .select('latest_block, latest_transactions')
+                .single();
 
-            const data = await response.json();
-            const totalTransactions = parseInt(data.result, 16);
-
-            setTotalTransactions(totalTransactions);
+            if (error) throw error;
+            setTotalTransactions(data);
         } catch (error) {
             console.log(error);
         }

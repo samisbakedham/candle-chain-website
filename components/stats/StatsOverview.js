@@ -54,7 +54,8 @@ export default function StatsOverview() {
                     key="total-transactions"
                     data={{
                         title: 'Total transactions',
-                        currentStats: totalTransactions,
+                        currentStats: totalTransactions.latest_transactions,
+                        previousStats: `${totalTransactions.latest_block} blocks`,
                     }}
                 />
                 <StatisticContainer
