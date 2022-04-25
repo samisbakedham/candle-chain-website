@@ -124,7 +124,7 @@ export default function DefaultHeader() {
                                     className="block text-center w-full py-3 px-4 rounded-md shadow bg-indigo-600 text-white font-medium hover:bg-indigo-700"
                                 >
                                     Sign up
-                                </a> // Do we need sign-up / login capabilities?
+                                </a>
                             </div>
                             <div className="mt-6 px-5">
                                 <p className="text-center text-base font-medium text-zinc-400">
