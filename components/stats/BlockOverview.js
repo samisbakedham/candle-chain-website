@@ -120,7 +120,7 @@ export default function BlockOverview({ number }) {
                         {block?.transactions.length || 0}
                     </p>
 
-                    <div className="mt-4 text-indigo-200 text-xs truncate">
+                    <div className="capitalize mt-4 text-indigo-200 text-xs truncate">
                         {getRelativeTime(block?.timestamp)}
                     </div>
                     <p className="mt-1 text-blue-300 font-semibold text-xs truncate">
