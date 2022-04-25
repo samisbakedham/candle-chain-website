@@ -8,7 +8,6 @@ export const NetworkStatsProvider = (props) => {
 
     const [totalBlocks, setTotalBlocks] = useState(0);
     const [totalTransactions, setTotalTransactions] = useState(0);
-    const [avgBlockTime, setAvgBlockTime] = useState(2);
 
     const fetchTotalBlocks = async () => {
         try {
@@ -33,7 +32,7 @@ export const NetworkStatsProvider = (props) => {
             console.log(error);
         }
     };
-// Check this out to implement https://eth.wiki/json-rpc/API#eth_gettransactionbyhash
+
     const fetchTotalTransactions = async () => {
         try {
             const response = await fetch(API_URL, {
@@ -61,39 +60,12 @@ export const NetworkStatsProvider = (props) => {
         }
     };
 
-    const fetchAvgBlockTime = async () => {
-        try {
-            // const response = await fetch(API_URL, {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //     },
-            //     body: JSON.stringify({
-            //         jsonrpc: '2.0',
-            //         method: 'eth_getBlockByNumber',
-            //         params: ['latest', false],
-            //         id: 1,
-            //     }),
-            // });
-
-            // const data = await response.json();
-            // const avgBlockTime = parseInt(data.result.timestamp, 16);
-
-            const avgBlockTime = 2;
-
-            setAvgBlockTime(`${avgBlockTime} seconds`);
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
     useEffect(() => {
-        // Use Promise.all to fetch all data at once, then refetch data every 2 seconds
-        Promise.all([
-            fetchTotalBlocks(),
-            fetchTotalTransactions(),
-            fetchAvgBlockTime(),
-        ])
+        // Refetch data every 5000ms (5 seconds)
+        const refetchInterval = 5000; // ms
+
+        // Use Promise.all to fetch all data at once
+        Promise.all([fetchTotalBlocks(), fetchTotalTransactions()])
             .then(() => {
                 setLoading(false);
             })
@@ -104,8 +76,7 @@ export const NetworkStatsProvider = (props) => {
         setInterval(() => {
             fetchTotalBlocks();
             fetchTotalTransactions();
-            fetchAvgBlockTime();
-        }, 5000);
+        }, refetchInterval);
     }, []);
 
     const values = {
@@ -113,7 +84,6 @@ export const NetworkStatsProvider = (props) => {
 
         totalBlocks,
         totalTransactions,
-        avgBlockTime,
     };
 
     return <NetworkStatsContext.Provider value={values} {...props} />;
