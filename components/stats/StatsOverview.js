@@ -101,8 +101,10 @@ export default function StatsOverview() {
                     onClick={crawlTransactions}
                     data={{
                         title: 'Total transactions',
-                        currentStats: totalTransactions.latest_transactions,
-                        previousStats: `the first ${totalTransactions.latest_block} blocks`,
+                        currentStats: totalTransactions?.latest_transactions,
+                        previousStats:
+                            totalTransactions?.latest_block &&
+                            `the first ${totalTransactions.latest_block} blocks`,
                     }}
                 />
                 <StatisticContainer
