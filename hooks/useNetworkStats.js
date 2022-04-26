@@ -42,7 +42,27 @@ export const NetworkStatsProvider = (props) => {
                 .single();
 
             if (error) throw error;
-            setTotalTransactions(data);
+
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    jsonrpc: '2.0',
+                    method: 'eth_gasPrice',
+                    params: [],
+                    id: 1,
+                }),
+            });
+
+            const gasPriceData = await response.json();
+            const gasPrice = parseInt(gasPriceData.result, 16);
+
+            setTotalTransactions((prevTransactions) => {
+                if (!gasPrice) return { ...prevTransactions, ...data };
+                return { ...prevTransactions, ...data, gas_price: gasPrice };
+            });
         } catch (error) {
             console.log(error);
         }

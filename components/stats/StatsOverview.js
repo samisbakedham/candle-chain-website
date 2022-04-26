@@ -85,7 +85,7 @@ export default function StatsOverview() {
                 Overview
             </h3>
 
-            <dl className="mt-5 grid grid-cols-1 rounded-lg bg-zinc-800/70 overflow-hidden shadow divide-y divide-gray-700/50 md:grid-cols-3 md:divide-y-0 md:divide-x">
+            <dl className="mt-5 grid grid-cols-1 rounded-lg bg-zinc-800/70 overflow-hidden shadow divide-y divide-gray-700/50 md:grid-cols-2 md:divide-y-0 md:divide-x">
                 <StatisticContainer
                     key="total-blocks"
                     data={{
@@ -112,6 +112,13 @@ export default function StatsOverview() {
                     data={{
                         title: 'Avg. block time',
                         currentStats: `${getAvgBlockTime()}s`,
+                    }}
+                />
+                <StatisticContainer
+                    key="gas-price"
+                    data={{
+                        title: 'Gas price',
+                        currentStats: `${totalTransactions?.gas_price} Gwei`,
                     }}
                 />
             </dl>
