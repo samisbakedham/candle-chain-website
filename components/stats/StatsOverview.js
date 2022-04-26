@@ -108,7 +108,7 @@ export default function StatsOverview() {
                     key="avg-block-time"
                     data={{
                         title: 'Avg. block time',
-                        currentStats: `${getAvgBlockTime()}`,
+                        currentStats: getAvgBlockTime(),
                         secondaryText: 'seconds',
                     }}
                 />
