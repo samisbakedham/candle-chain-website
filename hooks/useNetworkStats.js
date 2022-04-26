@@ -68,10 +68,6 @@ export const NetworkStatsProvider = (props) => {
         }
     };
 
-    const updateTotalTransactions = (data) => {
-        setTotalTransactions(data);
-    };
-
     useEffect(() => {
         // Refetch data every 5000ms (5 seconds)
         const refetchInterval = 5000; // ms
@@ -96,8 +92,6 @@ export const NetworkStatsProvider = (props) => {
 
         totalBlocks,
         totalTransactions,
-
-        updateTotalTransactions,
     };
 
     return <NetworkStatsContext.Provider value={values} {...props} />;
