@@ -48,29 +48,21 @@ export default function HomePage() {
                                     security.
                                 </p>
                                 <div className="mt-6">
-                                    <form
-                                        action="#"
-                                        className="sm:max-w-xl sm:mx-auto lg:mx-0"
-                                    >
-                                        <div className="sm:flex">
-                                            <button
-                                                type="submit"
-                                                className="block w-full py-3 px-4 rounded-md shadow bg-indigo-500 text-white font-medium hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-300 focus:ring-offset-gray-900"
-                                            >
-                                                Get started
-                                            </button>
-                                        </div>
-                                        <p className="mt-3 text-sm text-gray-300 sm:mt-4">
-                                            By signing up, you agree to our{' '}
-                                            <a
-                                                href="#"
-                                                className="font-medium text-white"
-                                            >
-                                                terms of service
-                                            </a>
-                                            .
-                                        </p>
-                                    </form>
+                                    <div className="sm:flex">
+                                        <button className="block w-full py-3 px-4 rounded-md shadow bg-indigo-500 text-white font-medium hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-300 focus:ring-offset-gray-900">
+                                            Get started
+                                        </button>
+                                    </div>
+                                    <p className="mt-3 text-sm text-gray-300 sm:mt-4">
+                                        By signing up, you agree to our{' '}
+                                        <a
+                                            href="#"
+                                            className="font-medium text-white"
+                                        >
+                                            terms of service
+                                        </a>
+                                        .
+                                    </p>
                                 </div>
                             </div>
                         </div>
