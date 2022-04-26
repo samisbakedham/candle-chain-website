@@ -1,29 +1,35 @@
-import { useState } from 'react';
 import { useBlocks } from '../../hooks/useBlocks';
 import { useNetworkStats } from '../../hooks/useNetworkStats';
 import StatisticContainer from './StatisticContainer';
 
 export default function StatsOverview() {
-    const { totalBlocks, totalTransactions, updateTotalTransactions } =
-        useNetworkStats();
+    const { totalBlocks, totalTransactions } = useNetworkStats();
     const { blocks } = useBlocks();
-
-    const [crawling, setCrawling] = useState(false);
 
     const getAvgBlockTime = () => {
         // If there are no blocks, defaults to 0 second
         if (blocks.length === 0) return 0;
 
         // remove block with duplicated number
-        const blocksWithoutDuplicates = blocks.filter(
-            (block, index, self) =>
-                index === self.findIndex((t) => t.number === block.number),
-        );
+        const blocksWithoutDuplicates = [
+            ...new Set(blocks.map((block) => block.number)),
+        ].map((number) => blocks.find((block) => block.number === number));
 
         // Get block timestamps, then sort them in ascending order
         const blockTimes = blocksWithoutDuplicates
-            .map((block) => block.timestamp)
-            .sort((a, b) => a - b);
+            .map((block) => ({
+                timestamp: parseInt(block.timestamp, 16),
+                number: parseInt(block.number, 16),
+            }))
+            // Sort by number
+            .sort((a, b) => b.number - a.number)
+            // Filter blocks with number difference not equal to 1
+            .filter((block, index, array) => {
+                if (index === 0) return true;
+                return Math.abs(block.number - array[index - 1].number) == 1;
+            })
+            // Get block times
+            .map((block) => block.timestamp);
 
         // Calculate the average block time based on block timestamp differences
         // Between current block and previous block
@@ -38,45 +44,6 @@ export default function StatsOverview() {
         ).toFixed(6);
 
         return avgBlockTime > 0 ? avgBlockTime : 0;
-    };
-
-    const addBlockWithNumber = async (number) => {
-        const response = await fetch('/api/blocks', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                number,
-            }),
-        });
-
-        // check if response is ok
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-
-        const data = await response.json();
-        return data;
-    };
-
-    const crawlTransactions = async () => {
-        if (crawling) return;
-
-        try {
-            setCrawling(true);
-            for (
-                let i = totalTransactions.latest_block;
-                i < totalBlocks;
-                i += 10
-            ) {
-                const block = await addBlockWithNumber(i);
-                updateTotalTransactions(block.data);
-            }
-        } catch (error) {
-            console.log(error);
-            setCrawling(false);
-        }
     };
 
     return (
