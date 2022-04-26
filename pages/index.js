@@ -20,10 +20,10 @@ export default function HomePage() {
                                     href="https://testdocs.candlelabs.org/docs/develop/network-details/network"
                                     className="inline-flex items-center text-white bg-black rounded-full p-1 pr-2 sm:text-base lg:text-sm xl:text-base hover:text-gray-200"
                                 >
-                                    <span className="px-3 py-0.5 text-white text-xs font-semibold leading-5 uppercase tracking-wide bg-indigo-500 rounded-full">
+                                    <span className="px-1 md:px-3 py-0.5 text-white text-xs font-semibold leading-5 uppercase tracking-wide bg-indigo-500 rounded-full">
                                         Candle Mainnet
                                     </span>
-                                    <span className="ml-4 text-sm">
+                                    <span className="ml-2 md:ml-4 text-sm">
                                         is open for developers 🎉!
                                     </span>
                                     <ChevronRightIcon
@@ -78,16 +78,16 @@ export default function HomePage() {
                             </div>
                         </div>
                     </div>
-                    <div className="mx-8 space-y-16 lg:mx-0">
+                    <div className="mx-8 space-y-8 md:space-y-16 lg:mx-0">
                         <StatsOverview />
                         <RecentBlocks />
                         <RecentTransactions />
 
-                        <div className="mt-8 p-8 bg-zinc-800 text-white rounded-lg">
-                            <h2 className="text-3xl font-semibold w-fit text-transparent bg-clip-text bg-gradient-to-br from-blue-400 via-purple-300 to-red-400">
+                        <div className="p-8 bg-zinc-800 text-white rounded-lg">
+                            <h2 className="text-xl md:text-3xl font-semibold w-fit text-transparent bg-clip-text bg-gradient-to-br from-blue-400 via-purple-300 to-red-400">
                                 What&apos;s next for Candle?
                             </h2>
-                            <p className="mt-2 text-lg">
+                            <p className="mt-2 text-sm md:text-lg">
                                 We&apos;re currently working on a number of
                                 features that will be added to the platform in
                                 the coming months.
