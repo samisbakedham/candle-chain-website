@@ -3,7 +3,7 @@ import BlockOverview from './BlockOverview';
 
 export default function RecentBlocks() {
     const { loading, totalBlocks } = useNetworkStats();
-    const blocksToShow = 6;
+    const blocksToDisplay = 9;
 
     const generateRecentBlocks = () => {
         if (!totalBlocks || totalBlocks.length == 0)
@@ -26,7 +26,7 @@ export default function RecentBlocks() {
 
         for (
             let i = totalBlocks;
-            i > totalBlocks - blocksToShow && i > 0;
+            i > totalBlocks - blocksToDisplay && i > 0;
             i--
         ) {
             const blockNumber = i;
