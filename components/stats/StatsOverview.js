@@ -91,6 +91,7 @@ export default function StatsOverview() {
                     data={{
                         title: 'Total blocks',
                         currentStats: totalBlocks,
+                        secondaryText: 'blocks',
                     }}
                 />
                 <StatisticContainer
@@ -107,14 +108,16 @@ export default function StatsOverview() {
                     key="avg-block-time"
                     data={{
                         title: 'Avg. block time',
-                        currentStats: `${getAvgBlockTime()}s`,
+                        currentStats: `${getAvgBlockTime()}`,
+                        secondaryText: 'seconds',
                     }}
                 />
                 <StatisticContainer
                     key="gas-price"
                     data={{
                         title: 'Gas price',
-                        currentStats: `${totalTransactions?.gas_price} Gwei`,
+                        currentStats: totalTransactions?.gas_price,
+                        secondaryText: 'Gwei',
                     }}
                 />
             </dl>

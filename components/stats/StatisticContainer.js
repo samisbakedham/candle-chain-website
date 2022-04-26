@@ -23,9 +23,10 @@ export default function StatisticContainer({ data, buttonLabel, onClick }) {
             <dd className="mt-1 flex justify-between items-baseline md:block lg:flex">
                 <div className="flex items-baseline text-2xl font-semibold text-indigo-300">
                     {data?.currentStats ?? '0'}
-                    {data?.previousStats && (
+                    {(data?.secondaryText || data?.previousStats) && (
                         <span className="ml-2 text-sm font-medium text-gray-300">
-                            from {data?.previousStats}
+                            {data?.secondaryText ||
+                                'from ' + data?.previousStats}
                         </span>
                     )}
                 </div>
