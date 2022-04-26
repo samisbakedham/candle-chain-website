@@ -119,15 +119,18 @@ export const BlocksProvider = (props) => {
     };
 
     const addBlock = (block) => {
-        // Check if block is already in the list
-        const blockInList = blocks?.find(
-            (blockInList) =>
-                blockInList?.hash === block?.hash ||
-                blockInList?.number === block?.number,
-        );
+        // Check if block is not valid
+        if (!block) {
+            console.log('Block is not valid');
+            return;
+        }
 
-        if (blockInList) return;
-        setBlocks((prevBlocks) => [...prevBlocks, block]);
+        setBlocks((prevBlocks) => [
+            ...prevBlocks.filter(
+                (prevBlock) => prevBlock?.number !== block.number,
+            ),
+            block,
+        ]);
     };
 
     const removeBlockWithNumber = (block) => {
