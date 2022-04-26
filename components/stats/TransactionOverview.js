@@ -15,17 +15,25 @@ export default function TransactionOverview({ transaction }) {
         }
     };
 
-    const getTransactionName = (type) => {
-        switch (type) {
-            case 'contract-call':
-                return 'Contract Call';
+    const isContractCall = (transaction) => {
+        return (
+            !transaction.to ||
+            transaction.from === transaction.to ||
+            transaction.to === '0x0000000000000000000000000000000000000000'
+        );
+    };
 
-            case 'token-transfer':
-                return 'Token Transfer';
+    const getTransactionName = (transaction) => {
+        if (isContractCall(transaction)) return 'Contract Call';
+        return 'Transfer transaction';
+    };
 
-            default:
-                return 'Unknown';
+    const getBlockNumber = (transaction) => {
+        if (transaction.blockNumber) {
+            const number = parseInt(transaction.blockNumber, 16);
+            return `Block #${number}`;
         }
+        return 'Unknown block';
     };
 
     return (
@@ -38,45 +46,67 @@ export default function TransactionOverview({ transaction }) {
                     <div>
                         <div className="flex items-center space-x-3">
                             <h3 className="text-gray-100 text-sm font-semibold truncate">
-                                {getTransactionName(transaction?.type)}
+                                {getTransactionName(transaction)}
                             </h3>
                             <span
                                 className={`capitalize flex-shrink-0 inline-transaction px-2 py-0.5 text-xs font-medium rounded-full ${getStatusColor(
-                                    transaction?.status,
+                                    'success',
                                 )}`}
                             >
-                                {transaction?.status}
+                                success
                             </span>
                         </div>
-                        <div className="mt-4 text-indigo-200 text-xs truncate">
-                            {'Recorded at ' +
-                                new Date(
-                                    transaction?.createdAt,
-                                ).toLocaleDateString('en-US', {
-                                    year: 'numeric',
-                                    month: 'short',
-                                    day: 'numeric',
 
-                                    hour: 'numeric',
-                                    minute: 'numeric',
-                                    second: 'numeric',
-                                })}
+                        <div className="mt-2 text-orange-200 text-xs truncate">
+                            {`Recorded at ${new Date(
+                                transaction?.blockData?.timestamp * 1000,
+                            ).toLocaleDateString('en-US', {
+                                year: 'numeric',
+                                month: 'short',
+                                day: 'numeric',
+
+                                hour: 'numeric',
+                                minute: 'numeric',
+                                second: 'numeric',
+                            })}`}
                         </div>
                     </div>
 
                     <div className="text-right">
-                        <p className="mt-1 text-indigo-300 text-sm truncate">
+                        <p className="mt-1 text-indigo-200 text-sm truncate">
                             <span className="font-medium text-gray-400">
                                 From{' '}
                             </span>
                             {transaction?.from}
                         </p>
 
-                        <p className="mt-1 text-indigo-300 text-sm truncate">
+                        <p className="mt-1 text-indigo-200 text-sm truncate">
                             <span className="font-medium text-gray-400">
                                 To{' '}
                             </span>
-                            {transaction?.to}
+                            {transaction?.to ??
+                                '0x0000000000000000000000000000000000000000'}
+                        </p>
+                    </div>
+
+                    <div className="mt-4 col-span-full grid grid-cols-1 md:grid-cols-3 gap-2 text-center">
+                        <p className="px-4 py-2 rounded-lg bg-blue-300/10 text-blue-200 text-sm truncate">
+                            <span className="font-medium">
+                                {getBlockNumber(transaction)}
+                            </span>{' '}
+                            ({transaction.blockNumber})
+                        </p>
+
+                        <p className="px-4 py-2 rounded-lg bg-green-300/10 text-green-200 text-sm truncate">
+                            <span className="font-medium">Gas Used: </span>
+                            {parseInt(transaction?.gas, 16)}
+                        </p>
+
+                        <p className="px-4 py-2 rounded-lg bg-red-300/10 text-red-200 text-sm truncate">
+                            <span className="font-medium">Gas Price: </span>
+                            {`${
+                                parseInt(transaction?.gasPrice, 16) / 1000000000
+                            } Gwei`}
                         </p>
                     </div>
                 </div>
