@@ -15,6 +15,15 @@ export default function BlockOverview({ number }) {
                 return;
             }
 
+            if (block) {
+                if (block.number == number) {
+                    setLoading(false);
+                    return;
+                }
+
+                setBlock(null);
+            }
+
             // If number is not a hexadecimal, convert it to one
             if (!number.toString().match(/^0x[0-9a-fA-F]{64}$/))
                 number = `0x${number.toString(16)}`;
@@ -49,7 +58,7 @@ export default function BlockOverview({ number }) {
         };
 
         fetchBlockWithNumber(number);
-    }, [number, addBlock]);
+    }, [number, block, addBlock]);
 
     const getStatusColor = (status) => {
         switch (status) {
