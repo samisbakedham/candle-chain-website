@@ -30,27 +30,32 @@ const handler = async (req, res) => {
 
 const generateBlocks = async (supabase, req, res) => {
     try {
-        const { data: overviewData, error: overviewError } = await supabase
-            .from('chain-overview')
-            .select('*')
+        const { data: latestBlock, error: latestBlockError } = await supabase
+            .from('blocks')
+            .select('number')
+            .order('number', {
+                ascending: false,
+            })
+            .range(0, 1)
+            .limit(1)
             .single();
 
-        if (overviewError)
+        if (latestBlockError)
             return res.status(500).json({
                 error: 'Error fetching chain overview',
             });
 
-        if (!overviewData)
+        if (!latestBlock)
             return res.status(500).json({
                 error: 'Chain overview not found',
             });
 
-        const { latest_block, latest_transactions } = overviewData;
+        const latestBlockNumber = latestBlock.number;
 
         const blocks = [];
 
         // fetch the next 10 blocks
-        for (let i = latest_block + 1; i <= latest_block + 10; i++) {
+        for (let i = latestBlockNumber + 1; i <= latestBlockNumber + 10; i++) {
             const hexNumber = `0x${i.toString(16)}`;
 
             const response = await fetch(API_URL, {
@@ -96,10 +101,28 @@ const generateBlocks = async (supabase, req, res) => {
             0,
         );
 
+        const { data: chainOverviewData, error: chainOverviewError } =
+            await supabase
+                .from('chain-overview')
+                .select('latest_transactions')
+                .single();
+
+        if (chainOverviewError)
+            return res.status(500).json({
+                error: 'Error fetching chain overview',
+            });
+
+        if (!chainOverviewData)
+            return res.status(500).json({
+                error: 'Chain overview not found',
+            });
+
+        const { latest_transactions } = chainOverviewData;
+
         const { data, error: newChainOverviewError } = await supabase
             .from('chain-overview')
             .update({
-                latest_block: latest_block + 10,
+                latest_block: latestBlockNumber + 10,
                 latest_transactions: latest_transactions + totalTransactions,
             })
             .eq('id', '014df7e4-b6b7-4398-b4e9-a2fab08712fa')
