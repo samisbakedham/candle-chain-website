@@ -19,7 +19,7 @@ export default function StatisticContainer({ data, buttonLabel, onClick }) {
 
             <dd className="mt-1 flex justify-between items-baseline md:block lg:flex">
                 {data?.currentStats ? (
-                    <div className="flex items-baseline text-2xl font-semibold text-indigo-300">
+                    <div className="flex items-baseline text-2xl font-semibold text-indigo-200">
                         {data?.currentStats}
                         {(data?.secondaryText || data?.previousStats) && (
                             <span className="ml-2 text-sm font-medium text-gray-300">

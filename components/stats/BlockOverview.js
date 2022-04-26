@@ -130,18 +130,18 @@ export default function BlockOverview({ number }) {
                             {loading ? 'processing' : 'mined'}
                         </span>
                     </div>
-                    <p className="mt-1 text-indigo-300 text-sm truncate">
-                        <span className="font-medium text-gray-400">
+                    <p className="mt-1 font-medium text-yellow-200 text-sm truncate">
+                        <span className="font-semibold text-orange-200">
                             Transactions:{' '}
                         </span>
                         {block?.transactions.length || 0}
                     </p>
 
-                    <div className="capitalize mt-4 text-indigo-200 text-xs truncate">
+                    <div className="capitalize mt-4 text-indigo-100 text-xs truncate">
                         {getRelativeTime(block?.timestamp)}
                     </div>
-                    <p className="mt-1 mb-4 text-blue-300 font-semibold text-xs truncate">
-                        <span className="font-medium text-gray-400">
+                    <p className="mt-1 mb-4 text-blue-200 font-semibold text-xs truncate">
+                        <span className="font-medium text-zinc-300">
                             Mined by{' '}
                         </span>
                         {block?.miner || 'Unknown'}
