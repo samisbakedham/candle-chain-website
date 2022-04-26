@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useBlocks } from '../../hooks/useBlocks';
 import { API_URL } from '../../utils/constants';
+import GasUsageStats from './GasUsageStats';
 
 export default function BlockOverview({ number }) {
     const { addBlock } = useBlocks();
@@ -139,22 +140,17 @@ export default function BlockOverview({ number }) {
                     <div className="capitalize mt-4 text-indigo-200 text-xs truncate">
                         {getRelativeTime(block?.timestamp)}
                     </div>
-                    <p className="mt-1 text-blue-300 font-semibold text-xs truncate">
+                    <p className="mt-1 mb-4 text-blue-300 font-semibold text-xs truncate">
                         <span className="font-medium text-gray-400">
                             Mined by{' '}
                         </span>
                         {block?.miner || 'Unknown'}
                     </p>
 
-                    <p className="mt-4 px-4 py-2 rounded-lg bg-green-500/10 text-green-300 text-sm truncate">
-                        <span className="font-medium">Gas used: </span>
-                        {parseInt(block?.gasUsed, 16) || 0}
-                    </p>
-
-                    <p className="mt-2 px-4 py-2 rounded-lg bg-yellow-500/10 text-yellow-300 text-sm truncate">
-                        <span className="font-medium">Gas limit: </span>
-                        {parseInt(block?.gasLimit, 16) || 0}
-                    </p>
+                    <GasUsageStats
+                        gasUsedHex={block?.gasUsed}
+                        gasLimitHex={block?.gasLimit}
+                    />
                 </div>
             </div>
         </li>
