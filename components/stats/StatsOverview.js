@@ -95,10 +95,6 @@ export default function StatsOverview() {
                 />
                 <StatisticContainer
                     key="total-transactions"
-                    buttonLabel={
-                        crawling ? 'Crawling...' : 'Crawl transactions'
-                    }
-                    onClick={crawlTransactions}
                     data={{
                         title: 'Total transactions',
                         currentStats: totalTransactions?.latest_transactions,
