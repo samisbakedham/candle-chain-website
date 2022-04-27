@@ -4,7 +4,7 @@ export default function CircularLoadingIndicator({ className, size = 4 }) {
             className={`inline-flex items-center rounded-md border border-transparent text-base ${className}`}
         >
             <svg
-                className={`h-${size} w-${size} animate-spin text-black dark:text-zinc-200`}
+                className={`h-${size} w-${size} animate-spin text-zinc-200`}
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
