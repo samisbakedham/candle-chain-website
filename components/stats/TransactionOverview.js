@@ -39,7 +39,7 @@ export default function TransactionOverview({ transaction }) {
     return (
         <li
             key={transaction?.id}
-            className="col-span-1 bg-zinc-800/70 rounded-lg shadow divide-y divide-gray-700/50"
+            className="col-span-1 bg-zinc-900/70 rounded-lg shadow divide-y divide-gray-700/50"
         >
             <div className="w-full flex items-center justify-between p-6 space-x-6">
                 <div className="flex-1 grid grid-cols-1 md:grid-cols-2 truncate">

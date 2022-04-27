@@ -52,7 +52,7 @@ export default function StatsOverview() {
                 Overview
             </h3>
 
-            <dl className="mt-5 grid grid-cols-1 rounded-lg bg-zinc-800/70 overflow-hidden shadow divide-y divide-gray-700/50 md:grid-cols-2 md:divide-y-0 md:divide-x">
+            <dl className="mt-5 grid grid-cols-1 rounded-lg bg-zinc-900/70 overflow-hidden shadow md:grid-cols-2">
                 <StatisticContainer
                     key="total-blocks"
                     data={{

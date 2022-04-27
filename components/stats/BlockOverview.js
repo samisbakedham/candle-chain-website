@@ -108,7 +108,7 @@ export default function BlockOverview({ number }) {
     return (
         <li
             key={block?.hash}
-            className="col-span-1 bg-zinc-800/70 rounded-lg shadow divide-gray-700/50"
+            className="col-span-1 bg-zinc-900/70 rounded-lg shadow divide-gray-700/50"
         >
             <div
                 className={`w-full flex items-center justify-between p-6 space-x-6

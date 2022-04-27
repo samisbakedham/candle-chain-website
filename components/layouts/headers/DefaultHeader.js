@@ -14,7 +14,7 @@ const navigation = [
 export default function DefaultHeader() {
     return (
         <Popover as="header" className="relative">
-            <div className="bg-zinc-900 pt-6">
+            <div className="bg-zinc-800 pt-4">
                 <nav
                     className="relative max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6"
                     aria-label="Global"

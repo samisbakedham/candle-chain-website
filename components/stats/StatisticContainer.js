@@ -29,7 +29,7 @@ export default function StatisticContainer({ data, buttonLabel, onClick }) {
                         )}
                     </div>
                 ) : (
-                    <CircularLoadingIndicator className="w-8 h-8" />
+                    <CircularLoadingIndicator className="mt-2 w-8 h-8" />
                 )}
             </dd>
         </div>
