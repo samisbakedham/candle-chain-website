@@ -7,9 +7,18 @@ import TransactionOverview from './TransactionOverview';
 
 export default function RecentTransactions() {
     const { getBlockWithNumber } = useBlocks();
-    const { totalTransactions } = useNetworkStats();
+    const { loading: statsLoading, totalTransactions } = useNetworkStats();
 
     const [loading, setLoading] = useState(true);
+    const [noData, setNoData] = useState(false);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (statsLoading) setNoData(true);
+        }, 3000);
+
+        return () => clearInterval(interval);
+    }, [statsLoading]);
 
     const [lastTotalTransactions, setLastTotalTransactions] = useState(0);
     const [recentTransactions, setRecentTransactions] = useState([]);
@@ -107,7 +116,21 @@ export default function RecentTransactions() {
             </h3>
 
             <ul role="list" className="grid grid-cols-1 gap-6">
-                {loading ? (
+                {noData ? (
+                    <div className="col-span-full">
+                        <div className="flex flex-col items-center justify-center">
+                            <div className="text-center">
+                                <h1 className="text-3xl font-bold">
+                                    No transactions found
+                                </h1>
+                                <p className="text-lg">
+                                    There are no transactions found in the
+                                    network.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                ) : loading ? (
                     <div className="w-full text-center">
                         <CircularLoadingIndicator className="w-8 h-8" />
                     </div>

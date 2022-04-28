@@ -1,6 +1,17 @@
+import { useEffect, useState } from 'react';
 import CircularLoadingIndicator from '../loaders/CircularLoadingIndicator';
 
 export default function StatisticContainer({ data, buttonLabel, onClick }) {
+    const [noData, setNoData] = useState(false);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (!data?.currentStats) setNoData(true);
+        }, 2000);
+
+        return () => clearInterval(interval);
+    }, [data?.currentStats]);
+
     return (
         <div key={data.title} className="px-4 py-5 sm:p-6">
             <dt className="text-base font-semibold text-gray-100">
@@ -18,7 +29,9 @@ export default function StatisticContainer({ data, buttonLabel, onClick }) {
             </dt>
 
             <dd className="mt-1 flex justify-between items-baseline md:block lg:flex">
-                {data?.currentStats ? (
+                {noData ? (
+                    <div>No data available</div>
+                ) : data?.currentStats ? (
                     <div className="flex items-baseline text-2xl font-semibold text-indigo-200">
                         {data?.currentStats}
                         {(data?.secondaryText || data?.previousStats) && (
