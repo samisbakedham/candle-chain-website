@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Fragment } from 'react';
 
-const navigation = [
+const navigations = [
     { name: 'Solutions', href: '/solutions' },
     { name: 'About', href: '/about' },
     { name: 'Documentation', href: '/docs' },
@@ -48,11 +48,11 @@ export default function DefaultHeader() {
                             </div>
                         </div>
                         <div className="hidden space-x-8 md:flex md:ml-10">
-                            {navigation.map((item) => (
+                            {navigations.map((item) => (
                                 <a
                                     key={item.name}
                                     href={item.href}
-                                    className="text-base font-medium text-white hover:text-zinc-300"
+                                    className="text-base font-medium text-white/50 hover:text-zinc-100 transition duration-300"
                                 >
                                     {item.name}
                                 </a>
@@ -61,7 +61,7 @@ export default function DefaultHeader() {
                     </div>
                     <div className="hidden md:flex md:items-center md:space-x-6">
                         <Link href="/wallets" passHref>
-                            <a className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-600">
+                            <a className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-600 transition duration-300">
                                 Access Wallets
                             </a>
                         </Link>
@@ -104,7 +104,7 @@ export default function DefaultHeader() {
                         </div>
                         <div className="pt-5 pb-6">
                             <div className="px-2 space-y-1">
-                                {navigation.map((item) => (
+                                {navigations.map((item) => (
                                     <a
                                         key={item.name}
                                         href={item.href}

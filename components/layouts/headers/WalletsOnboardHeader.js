@@ -55,7 +55,7 @@ export default function WalletsOnboardHeader() {
                     </div>
                     <div className="hidden md:flex md:items-center md:space-x-6">
                         <Link href="/guides" passHref>
-                            <a className="text-base font-medium text-white hover:text-zinc-300">
+                            <a className="text-base font-medium text-white hover:text-zinc-300 transition duration-300">
                                 Support
                             </a>
                         </Link>
@@ -63,7 +63,7 @@ export default function WalletsOnboardHeader() {
                         <Link href="https://metamask.io/" passHref>
                             <a
                                 target="_blank"
-                                className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-600"
+                                className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-600 transition duration-300"
                             >
                                 Connect to a Wallet
                             </a>

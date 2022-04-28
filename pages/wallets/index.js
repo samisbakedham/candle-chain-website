@@ -36,7 +36,7 @@ export default function WalletsPage() {
         return features.map((feature) => (
             <div
                 key={feature.title}
-                className="flex h-64 bg-zinc-700/70 hover:bg-zinc-700 hover:-translate-y-2 p-4 rounded-lg flex-col items-center justify-between transition duration-300"
+                className="cursor-pointer flex h-64 bg-zinc-700/70 hover:bg-zinc-700 hover:-translate-y-2 p-4 rounded-lg flex-col items-center justify-between transition duration-300"
             >
                 <div className="text-center text-white font-bold text-2xl">
                     {feature.title}
@@ -53,7 +53,7 @@ export default function WalletsPage() {
 
     return (
         <div className="p-8">
-            <div className="flex flex-col items-center justify-center md:flex-row space-y-2 md:space-y-0 md:space-x-4">
+            <div className="cursor-default flex flex-col items-center justify-center md:flex-row space-y-2 md:space-y-0 md:space-x-4">
                 <div className="text-center text-2xl lg:text-4xl">
                     Getting started with
                 </div>
