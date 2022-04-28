@@ -58,12 +58,11 @@ export default function HomePage() {
                                     </div>
                                     <p className="mt-3 text-sm text-gray-300 sm:mt-4">
                                         By signing up, you agree to our{' '}
-                                        <a
-                                            href="/terms"
-                                            className="font-medium text-white"
-                                        >
-                                            terms of service
-                                        </a>
+                                        <Link href="/terms" passHref>
+                                            <a className="font-medium text-white">
+                                                terms of service
+                                            </a>
+                                        </Link>
                                         .
                                     </p>
                                 </div>
