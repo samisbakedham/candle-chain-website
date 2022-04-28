@@ -30,7 +30,7 @@ export default function StatisticContainer({ data, buttonLabel, onClick }) {
 
             <dd className="mt-1 flex justify-between items-baseline md:block lg:flex">
                 {noData ? (
-                    <div>No data available</div>
+                    <div className="text-zinc-400">No data available</div>
                 ) : data?.currentStats ? (
                     <div className="flex items-baseline text-2xl font-semibold text-indigo-200">
                         {data?.currentStats}

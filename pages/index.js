@@ -89,7 +89,7 @@ export default function HomePage() {
                             <h2 className="text-xl md:text-3xl font-semibold w-fit text-transparent bg-clip-text bg-gradient-to-br from-blue-400 via-purple-300 to-red-400">
                                 What&apos;s next for Candle?
                             </h2>
-                            <p className="mt-2 text-sm md:text-lg">
+                            <p className="mt-2 text-sm md:text-lg text-zinc-300">
                                 We&apos;re currently working on a number of
                                 features that will be added to the platform in
                                 the coming months.

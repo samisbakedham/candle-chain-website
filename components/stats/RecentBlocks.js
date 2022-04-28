@@ -23,10 +23,10 @@ export default function RecentBlocks() {
                 <div className="col-span-full">
                     <div className="flex flex-col items-center justify-center">
                         <div className="text-center">
-                            <h1 className="text-3xl font-bold">
+                            <h1 className="text-3xl font-bold text-zinc-400">
                                 No blocks found
                             </h1>
-                            <p className="text-lg">
+                            <p className="text-lg text-zinc-500">
                                 There are no blocks found in the network.
                             </p>
                         </div>
@@ -62,11 +62,12 @@ export default function RecentBlocks() {
                     <div className="col-span-full">
                         <div className="flex flex-col items-center justify-center">
                             <div className="text-center">
-                                <h1 className="text-3xl font-bold">
-                                    No data available
+                                <h1 className="text-3xl font-bold text-zinc-400">
+                                    Data is not available
                                 </h1>
-                                <p className="text-lg">
-                                    There are no blocks found in the network.
+                                <p className="text-lg text-zinc-500">
+                                    Could not fetch recent blocks from the
+                                    network.
                                 </p>
                             </div>
                         </div>
