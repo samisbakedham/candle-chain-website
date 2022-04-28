@@ -1,5 +1,5 @@
-import DefaultLayout from '../../components/layouts/DefaultLayout';
-import ComingSoonAlert from '../../components/placeholders/ComingSoonAlert';
+import DefaultLayout from '../components/layouts/DefaultLayout';
+import ComingSoonAlert from '../components/placeholders/ComingSoonAlert';
 
 TermsPage.getLayout = (page) => {
     return <DefaultLayout>{page}</DefaultLayout>;

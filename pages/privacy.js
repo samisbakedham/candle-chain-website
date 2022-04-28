@@ -1,5 +1,5 @@
-import DefaultLayout from '../../components/layouts/DefaultLayout';
-import ComingSoonAlert from '../../components/placeholders/ComingSoonAlert';
+import DefaultLayout from '../components/layouts/DefaultLayout';
+import ComingSoonAlert from '../components/placeholders/ComingSoonAlert';
 
 PrivacyPage.getLayout = (page) => {
     return <DefaultLayout>{page}</DefaultLayout>;
