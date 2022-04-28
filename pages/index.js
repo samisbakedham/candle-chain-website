@@ -59,7 +59,7 @@ export default function HomePage() {
                                     <p className="mt-3 text-sm text-gray-300 sm:mt-4">
                                         By signing up, you agree to our{' '}
                                         <a
-                                            href="#"
+                                            href="/terms"
                                             className="font-medium text-white"
                                         >
                                             terms of service
