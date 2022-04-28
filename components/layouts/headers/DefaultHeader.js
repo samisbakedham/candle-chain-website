@@ -1,6 +1,7 @@
 import { Popover, Transition } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Fragment } from 'react';
 
 const navigation = [
@@ -21,17 +22,19 @@ export default function DefaultHeader() {
                 >
                     <div className="flex items-center flex-1">
                         <div className="flex items-center justify-between w-full md:w-auto">
-                            <a href="#">
-                                <span className="sr-only">Candle</span>
-                                <div className="w-16 h-16">
-                                    <Image
-                                        width={251}
-                                        height={251}
-                                        src="/images/logo.png"
-                                        alt="Candle logo"
-                                    />
-                                </div>
-                            </a>
+                            <Link href="/" passHref>
+                                <a>
+                                    <span className="sr-only">Candle</span>
+                                    <div className="w-16 h-16">
+                                        <Image
+                                            width={251}
+                                            height={251}
+                                            src="/images/logo.png"
+                                            alt="Candle logo"
+                                        />
+                                    </div>
+                                </a>
+                            </Link>
                             <div className="-mr-2 flex items-center md:hidden">
                                 <Popover.Button className="bg-zinc-900 rounded-md p-2 inline-flex items-center justify-center text-zinc-400 hover:bg-zinc-800 focus:outline-none focus:ring-2 focus-ring-inset focus:ring-zinc-700">
                                     <span className="sr-only">
