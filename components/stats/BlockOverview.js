@@ -119,7 +119,7 @@ export default function BlockOverview({ number }) {
                         <h3 className="text-blue-300 text-sm font-semibold truncate">
                             #{parseInt(block?.number, 16) || number}{' '}
                             <span className="text-gray-100">
-                                ({block?.number ?? `0x${number.toString(16)}`})
+                                ({block?.number ?? `0x${number?.toString(16)}`})
                             </span>
                         </h3>
                         <span

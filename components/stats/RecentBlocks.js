@@ -44,7 +44,7 @@ export default function RecentBlocks() {
             recentBlocks.push(blockNumber);
 
         return recentBlocks.map((blockNumber) => (
-            <BlockOverview key={blockNumber} blockNumber={blockNumber} />
+            <BlockOverview key={blockNumber} number={blockNumber} />
         ));
     };
 
