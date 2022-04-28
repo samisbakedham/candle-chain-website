@@ -26,7 +26,7 @@ export default function RecentBlocks() {
                             <h1 className="text-3xl font-bold text-zinc-400">
                                 No blocks found
                             </h1>
-                            <p className="text-lg text-zinc-500">
+                            <p className="text-lg font-semibold text-zinc-500">
                                 There are no blocks found in the network.
                             </p>
                         </div>
@@ -65,7 +65,7 @@ export default function RecentBlocks() {
                                 <h1 className="text-3xl font-bold text-zinc-400">
                                     Data is not available
                                 </h1>
-                                <p className="text-lg text-zinc-500">
+                                <p className="text-lg font-semibold text-zinc-500">
                                     Could not fetch recent blocks from the
                                     network.
                                 </p>

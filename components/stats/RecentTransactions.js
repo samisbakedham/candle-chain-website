@@ -37,7 +37,7 @@ export default function RecentTransactions() {
                                 <h1 className="text-3xl font-bold text-zinc-400">
                                     No transactions found
                                 </h1>
-                                <p className="text-lg text-zinc-500">
+                                <p className="text-lg font-semibold text-zinc-500">
                                     There are no transactions found in the
                                     network.
                                 </p>
@@ -123,7 +123,7 @@ export default function RecentTransactions() {
                                 <h1 className="text-3xl font-bold text-zinc-400">
                                     Data is not available
                                 </h1>
-                                <p className="text-lg text-zinc-500">
+                                <p className="text-lg font-semibold text-zinc-500">
                                     Could not fetch recent transactions from the
                                     network.
                                 </p>
