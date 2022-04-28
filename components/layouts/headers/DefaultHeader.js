@@ -61,13 +61,8 @@ export default function DefaultHeader() {
                     </div>
                     <div className="hidden md:flex md:items-center md:space-x-6">
                         <Link href="/wallets" passHref>
-                            <a className="text-base font-medium text-white hover:text-zinc-300">
-                                Access Wallets
-                            </a>
-                        </Link>
-                        <Link href="/wallets/create" passHref>
                             <a className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-600">
-                                Create a Wallet
+                                Access Wallets
                             </a>
                         </Link>
                     </div>
