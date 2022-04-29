@@ -120,22 +120,20 @@ export default function DefaultHeader() {
                                 ))}
                             </div>
                             <div className="mt-6 px-5">
-                                <a
-                                    href="#"
-                                    className="block text-center w-full py-3 px-4 rounded-md shadow bg-indigo-600 text-white font-medium hover:bg-indigo-700"
-                                >
-                                    Sign up
-                                </a>
+                                <Link href="/login" passHref>
+                                    <a className="block text-center w-full py-3 px-4 rounded-md shadow bg-indigo-600 text-white font-medium hover:bg-indigo-700">
+                                        Connect a Wallet
+                                    </a>
+                                </Link>
                             </div>
                             <div className="mt-6 px-5">
                                 <p className="text-center text-base font-medium text-zinc-400">
                                     Existing account?{' '}
-                                    <a
-                                        href="#"
-                                        className="text-indigo-300 hover:underline"
-                                    >
-                                        Login
-                                    </a>
+                                    <Link href="/wallets" passHref>
+                                        <a className="text-indigo-300 hover:underline">
+                                            Login
+                                        </a>
+                                    </Link>
                                 </p>
                             </div>
                         </div>
