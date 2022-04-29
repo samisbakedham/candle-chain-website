@@ -4,12 +4,18 @@ import StatsOverview from '../components/stats/StatsOverview';
 import RecentBlocks from '../components/stats/RecentBlocks';
 import Link from 'next/link';
 import RecentTransactions from '../components/stats/RecentTransactions';
+import { useEffect } from 'react';
+import { supabase } from '../utils/clients/supabase';
 
 HomePage.getLayout = (page) => {
     return <DefaultLayout>{page}</DefaultLayout>;
 };
 
 export default function HomePage() {
+    useEffect(() => {
+        supabase.auth.signOut();
+    }, []);
+
     return (
         <>
             <div className="pt-10 sm:pt-16 lg:pt-8 lg:pb-14 lg:overflow-hidden">
@@ -50,7 +56,7 @@ export default function HomePage() {
                                 </p>
                                 <div className="mt-6">
                                     <div className="sm:flex">
-                                        <Link href="/wallets/create" passHref>
+                                        <Link href="/login" passHref>
                                             <a className="block text-center w-full py-3 px-4 rounded-md shadow bg-indigo-500 text-white font-medium hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-300 focus:ring-offset-gray-900">
                                                 Get started
                                             </a>

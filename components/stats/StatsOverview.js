@@ -10,10 +10,15 @@ export default function StatsOverview() {
         // If there are no blocks, defaults to 0 second
         if (blocks.length === 0) return 0;
 
+        // remove null blocks
+        const filteredBlocks = blocks.filter((block) => block);
+
         // remove block with duplicated number
         const blocksWithoutDuplicates = [
-            ...new Set(blocks.map((block) => block.number)),
-        ].map((number) => blocks.find((block) => block.number === number));
+            ...new Set(filteredBlocks.map((block) => block.number)),
+        ].map((number) =>
+            filteredBlocks.find((block) => block.number === number),
+        );
 
         // Get block timestamps, then sort them in ascending order
         const blockTimes = blocksWithoutDuplicates

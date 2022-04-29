@@ -72,6 +72,8 @@ export const BlocksProvider = (props) => {
             const data = await response.json();
             const block = data.result;
 
+            if (!block) throw new Error('Block not found');
+
             // Add block to list
             setBlocks((prevBlocks) => [...prevBlocks, block]);
 
@@ -82,7 +84,7 @@ export const BlocksProvider = (props) => {
     };
 
     const getBlockWithNumber = async (number) => {
-        if (!number) {
+        if (!number && number !== 0) {
             console.log('No block number provided');
             return;
         }

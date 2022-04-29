@@ -81,12 +81,13 @@ export default function RecentTransactions() {
             });
 
             const fetchedBlocks = await Promise.all(blockPromises);
+            const validBlocks = fetchedBlocks.filter((block) => block);
 
             // Extract transactions from each block, then for each transaction,
             // add a 'blockData' property with the block data
             const transactions = [];
 
-            for (const block of fetchedBlocks) {
+            for (const block of validBlocks) {
                 for (const transaction of block.transactions) {
                     transaction.blockData = block;
                     transactions.push(transaction);
