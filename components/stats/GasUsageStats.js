@@ -2,7 +2,7 @@ export default function GasUsageStats({ gasUsedHex, gasLimitHex }) {
     const gasUsed = parseInt(gasUsedHex || 0, 16);
     const gasLimit = parseInt(gasLimitHex || 0, 16);
 
-    const gasUsedPercent = (gasUsed / (gasLimit || 1)) * 100;
+    const gasUsedPercent = ((gasUsed / (gasLimit || 1)) * 100).toFixed(3);
 
     return (
         <div>
