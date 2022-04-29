@@ -103,34 +103,21 @@ export default function WalletsOnboardHeader() {
                             </div>
                         </div>
                         <div className="pt-5 pb-6">
-                            <div className="px-2 space-y-1">
-                                {navigation.map((item) => (
-                                    <a
-                                        key={item.name}
-                                        href={item.href}
-                                        className="block px-3 py-2 rounded-md text-base font-medium text-zinc-300 hover:bg-zinc-700"
-                                    >
-                                        {item.name}
-                                    </a>
-                                ))}
-                            </div>
                             <div className="mt-6 px-5">
-                                <a
-                                    href="#"
-                                    className="block text-center w-full py-3 px-4 rounded-md shadow bg-indigo-600 text-white font-medium hover:bg-indigo-700"
-                                >
-                                    Sign up
-                                </a>
+                                <Link href="/login" passHref>
+                                    <a className="block text-center w-full py-3 px-4 rounded-md shadow bg-indigo-600 text-white font-medium hover:bg-indigo-700">
+                                        Connect a Wallet
+                                    </a>
+                                </Link>
                             </div>
                             <div className="mt-6 px-5">
                                 <p className="text-center text-base font-medium text-zinc-400">
                                     Existing account?{' '}
-                                    <a
-                                        href="#"
-                                        className="text-indigo-300 hover:underline"
-                                    >
-                                        Login
-                                    </a>
+                                    <Link href="/wallets" passHref>
+                                        <a className="text-indigo-300 hover:underline">
+                                            Login
+                                        </a>
+                                    </Link>
                                 </p>
                             </div>
                         </div>
