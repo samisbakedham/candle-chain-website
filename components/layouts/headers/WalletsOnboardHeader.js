@@ -60,11 +60,8 @@ export default function WalletsOnboardHeader() {
                             </a>
                         </Link>
 
-                        <Link href="https://metamask.io/" passHref>
-                            <a
-                                target="_blank"
-                                className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-600 transition duration-300"
-                            >
+                        <Link href="/login" passHref>
+                            <a className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-600 transition duration-300">
                                 Connect to a Wallet
                             </a>
                         </Link>
