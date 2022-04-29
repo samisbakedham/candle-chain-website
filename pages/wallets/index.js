@@ -1,5 +1,6 @@
 import { SunIcon } from '@heroicons/react/outline';
 import { WalletsOnboardLayout } from '../../components/layouts/WalletsLayout';
+import BetterLink from '../../components/links/BetterLink';
 
 WalletsPage.getLayout = (page) => {
     return <WalletsOnboardLayout>{page}</WalletsOnboardLayout>;
@@ -11,31 +12,36 @@ const features = [
         description:
             'View your crypto assets and transactions in a simple and intuitive way.',
         color: 'green',
+        url: '/wallets/dashboard',
     },
     {
         title: 'Candle Wallet',
         description:
             'A wallet that allows you to send and receive crypto assets in a secure way.',
         color: 'blue',
+        url: '/about/wallet',
     },
     {
         title: 'Candle Bridge',
         description:
             'Deposit and withdraw funds from your wallet to other networks.',
         color: 'purple',
+        url: '/wallets/dashboard/bridge',
     },
     {
         title: 'Candle Staking',
         description: 'Stake your crypto assets to earn rewards.',
         color: 'orange',
+        url: '/wallets/dashboard/staking',
     },
 ];
 
 export default function WalletsPage() {
     const generateFeatures = () => {
         return features.map((feature) => (
-            <div
+            <BetterLink
                 key={feature.title}
+                href={feature.url}
                 className="cursor-pointer flex h-64 bg-zinc-700/70 hover:bg-zinc-700 hover:-translate-y-2 p-4 rounded-lg flex-col items-center justify-between transition duration-300"
             >
                 <div className="text-center text-white font-bold text-2xl">
@@ -47,7 +53,7 @@ export default function WalletsPage() {
                 <div className="text-center h-1/2 text-base text-zinc-300">
                     {feature.description}
                 </div>
-            </div>
+            </BetterLink>
         ));
     };
 
