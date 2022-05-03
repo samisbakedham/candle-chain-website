@@ -88,9 +88,10 @@ export default function StatsOverview() {
                     key="gas-price"
                     data={{
                         title: 'Gas price',
-                        currentStats: totalTransactions?.gas_price
-                            ? totalTransactions?.gas_price / 1000000000
-                            : null,
+                        currentStats:
+                            totalTransactions?.gas_price != null
+                                ? totalTransactions?.gas_price / 1000000000
+                                : null,
                         secondaryText: 'Gwei',
                     }}
                 />

@@ -60,7 +60,8 @@ export const NetworkStatsProvider = (props) => {
             const gasPrice = parseInt(gasPriceData.result, 16);
 
             setTotalTransactions((prevTransactions) => {
-                if (!gasPrice) return { ...prevTransactions, ...data };
+                if (gasPrice == null || gasPrice == undefined)
+                    return { ...prevTransactions, ...data };
                 return { ...prevTransactions, ...data, gas_price: gasPrice };
             });
         } catch (error) {

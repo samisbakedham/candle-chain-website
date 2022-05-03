@@ -35,13 +35,12 @@ export default function StatisticContainer({ data, buttonLabel, onClick }) {
                 ) : data?.currentStats != null ? (
                     <div className="flex items-baseline text-2xl font-semibold text-indigo-200">
                         {data?.currentStats}
-                        {data?.currentStats != 0 &&
-                            (data?.secondaryText || data?.previousStats) && (
-                                <span className="ml-2 text-sm font-medium text-gray-300">
-                                    {data?.secondaryText ||
-                                        'from ' + data?.previousStats}
-                                </span>
-                            )}
+                        {data?.secondaryText && (
+                            <span className="ml-2 text-sm font-medium text-gray-300">
+                                {data?.secondaryText ||
+                                    'from ' + data?.previousStats}
+                            </span>
+                        )}
                     </div>
                 ) : (
                     <CircularLoadingIndicator className="mt-2 w-8 h-8" />
