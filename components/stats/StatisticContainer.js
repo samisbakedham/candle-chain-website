@@ -35,10 +35,16 @@ export default function StatisticContainer({ data, buttonLabel, onClick }) {
                 ) : data?.currentStats != null ? (
                     <div className="flex items-baseline text-2xl font-semibold text-indigo-200">
                         {data?.currentStats}
+
                         {data?.secondaryText && (
                             <span className="ml-2 text-sm font-medium text-gray-300">
-                                {data?.secondaryText ||
-                                    'from ' + data?.previousStats}
+                                {data?.secondaryText}
+                            </span>
+                        )}
+
+                        {data?.previousStats && (
+                            <span className="ml-2 text-sm font-medium text-gray-300">
+                                {data?.previousStats}
                             </span>
                         )}
                     </div>
